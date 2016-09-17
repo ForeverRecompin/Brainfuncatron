@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Brainfuck {
-    private static final int MEMORY_SIZE = 30;
+    private static final int MEMORY_SIZE = 30000;
     private int[] memory;
     private int memoryPointer;
     private String brainfuckCode;
