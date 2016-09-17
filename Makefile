@@ -1,4 +1,4 @@
-all:	brainfuck clean
+all:	brainfuck
 
 brainfuck:
 	javac Brainfuck.java

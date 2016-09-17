@@ -52,10 +52,16 @@ public class Brainfuck {
 
     private void incrementCellContent() {
         ++memory[memoryPointer];
+        if (memory[memoryPointer] > 255) {
+            memory[memoryPointer] = 0;
+        }
     }
 
     private void decrementCellContent() {
         --memory[memoryPointer];
+        if (memory[memoryPointer] < 0) {
+            memory[memoryPointer] = 255;
+        }
     }
 
     public void evaluate() {
@@ -82,17 +88,16 @@ public class Brainfuck {
                 int pos = queue.peekFirst();
                 if (memory[memoryPointer] > 0) {
                     i = pos;
-                } else {
+                } else if (memory[memoryPointer] == 0){
                     queue.pollFirst();
                 }
             }
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Brainfuck bf = new Brainfuck();
-        bf.setBrainFuckCode("++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.");
+        bf.setBrainFuckCode(new Scanner(System.in).next());
         bf.evaluate();
-        System.out.println(Arrays.toString(bf.getMemory()));
     }
 }
