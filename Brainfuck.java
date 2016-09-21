@@ -36,7 +36,7 @@ public class Brainfuck {
     }
 
     private void getCellInput() {
-        memory[memoryPointer] = in.next().trim().charAt(0);
+        memory[memoryPointer] = in.next().charAt(0);
     }
 
     private void displayCellContent() {
@@ -67,6 +67,7 @@ public class Brainfuck {
     public void evaluate() {
         int foundOpeningBracketAtIndex;
         Deque<Integer> queue = new LinkedList<>();
+        assert brainfuckCode.length() >= 1;
         for (int i = 0; i < brainfuckCode.length(); ++i) {
             char command = brainfuckCode.charAt(i);
             if (command == ',') {
@@ -97,7 +98,7 @@ public class Brainfuck {
 
     public static void main(String[] args) throws IOException {
         Brainfuck bf = new Brainfuck();
-        bf.setBrainFuckCode(new Scanner(System.in).next());
+        bf.setBrainFuckCode(bf.in.next());
         bf.evaluate();
     }
 }
